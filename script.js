@@ -209,10 +209,12 @@ if (cursorGlow && window.matchMedia("(hover: hover)").matches) {
   window.addEventListener("mouseleave", () => cursorGlow.classList.remove("active"));
 }
 
-// Contact form -> delivered straight to the studio inbox via FormSubmit
-// (no backend needed), with a mailto fallback if the request ever fails,
-// so a lead is never silently lost.
+// Contact form -> delivered to the studio inbox (FormSubmit) and to Telegram
+// in parallel, with a mailto fallback only if both channels fail, so a lead
+// is never silently lost.
 const CONTACT_EMAIL = "milikidze.geoi@gmail.com";
+const TELEGRAM_BOT_TOKEN = "8670745121:AAFcQTan0AhtcOFPZgOOeE98HXyKKl1QBY0";
+const TELEGRAM_CHAT_ID = "328851476";
 const form = document.getElementById("contact-form");
 const successOverlay = document.getElementById("successOverlay");
 const successClose = document.getElementById("successClose");
@@ -228,21 +230,38 @@ form.addEventListener("submit", async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = "Отправляем…";
 
-  try {
-    const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        Имя: name,
-        "Телефон / почта": phone,
-        "Удобный мессенджер": messenger,
-        _subject: `Заявка на анализ бизнеса от ${name}`,
-        _template: "table",
-      }),
-    });
-    if (!response.ok) throw new Error("FormSubmit request failed");
-  } catch (err) {
-    // Fallback: open a pre-filled email so the lead isn't lost if the request fails
+  const sendEmail = fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({
+      Имя: name,
+      "Телефон / почта": phone,
+      "Удобный мессенджер": messenger,
+      _subject: `Заявка на анализ бизнеса от ${name}`,
+      _template: "table",
+    }),
+  });
+
+  const sendTelegram = fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: TELEGRAM_CHAT_ID,
+      text: [
+        "🆕 Новая заявка с сайта NODEX",
+        "",
+        `Имя: ${name}`,
+        `Телефон/почта: ${phone}`,
+        `Удобный мессенджер: ${messenger}`,
+      ].join("\n"),
+    }),
+  });
+
+  const results = await Promise.allSettled([sendEmail, sendTelegram]);
+  const allFailed = results.every((r) => r.status === "rejected" || !r.value.ok);
+
+  if (allFailed) {
+    // Fallback: open a pre-filled email so the lead isn't lost if both requests fail
     const subject = `Заявка на анализ бизнеса от ${name}`;
     const body = [`Имя: ${name}`, `Телефон/почта: ${phone}`, `Удобный мессенджер: ${messenger}`].join("\n");
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
