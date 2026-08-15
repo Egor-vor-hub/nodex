@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NODEX — AI-интеграция и автоматизация бизнеса</title>
+<meta name="description" content="Внедряю AI-агентов на Claude и n8n: обработка лидов за 3 секунды, интеграция с CRM, автоматизация документооборота. Первая рабочая версия — за 48 часов.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NODEX">
+<meta property="og:title" content="NODEX — AI-интеграция и автоматизация бизнеса">
+<meta property="og:description" content="Внедряю AI-агентов на Claude и n8n: обработка лидов за 3 секунды, интеграция с CRM, автоматизация документооборота. Первая рабочая версия — за 48 часов.">
+<meta property="og:image" content="photo/ai-agent.png">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NODEX — AI-интеграция и автоматизация бизнеса">
+<meta name="twitter:description" content="Внедряю AI-агентов на Claude и n8n: обработка лидов за 3 секунды, интеграция с CRM, автоматизация документооборота.">
+<meta name="twitter:image" content="photo/ai-agent.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#top" class="logo">nodex<span class="logo__dot">•</span></a>
+
+    <nav class="nav" id="nav">
+      <a href="#top" class="nav__link active">Главная</a>
+      <a href="#services" class="nav__link">Услуги</a>
+      <a href="#cases" class="nav__link">Кейсы</a>
+      <a href="#pricing" class="nav__link">Тарифы</a>
+      <a href="#contact" class="nav__link">Контакты</a>
+    </nav>
+
+    <a href="#contact" class="btn btn--white header__cta">Оставить заявку</a>
+    <button class="burger" id="burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__glow hero__glow--key"></div>
+      <div class="hero__glow hero__glow--1"></div>
+      <div class="hero__glow hero__glow--2"></div>
+      <div class="hero__photo"></div>
+    </div>
+
+    <div class="hero__inner">
+
+      <div class="container">
+        <div class="hero__top">
+          <span class="hero__label">AI Integration Studio</span>
+
+          <h1 class="hero__title">
+            <span class="hero__line hero__line--fill">— лиды не ждут —</span>
+            <span class="hero__line hero__line--ghost">ответа менеджера</span>
+          </h1>
+        </div>
+      </div>
+
+      <div class="hero__grid">
+        <div class="hero__left">
+          <p class="hero__desc">Внедряю AI-агентов на Claude и n8n, которые отвечают клиенту за 3 секунды, квалифицируют лида и сами обновляют сделку в CRM — 24/7, без выходных и найма новых людей.</p>
+
+          <div class="hero__tags">
+            <span class="tag">n8n</span>
+            <span class="tag">Claude API</span>
+            <span class="tag">OpenAI</span>
+            <span class="tag">CRM API</span>
+          </div>
+
+          <div class="hero__actions">
+            <a href="#contact" class="btn btn--primary">Начать бесплатно</a>
+            <a href="#cases" class="btn btn--ghost"><span class="play">▶</span> Смотреть кейсы</a>
+          </div>
+        </div>
+
+        <div class="hero__stats">
+          <div class="live-chip">
+            <span class="live-dot"></span> AI на связи 24/7
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__num">3&nbsp;сек</div>
+            <div class="stat-card__label">Среднее время ответа AI-агента</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__num">×1.4</div>
+            <div class="stat-card__label">Рост конверсии лид → сделка</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee__track">
+      <span>n8n</span><span>Make</span><span>Claude API</span><span>OpenAI</span><span>Bitrix24</span><span>amoCRM</span><span>HubSpot</span><span>Telegram API</span><span>WhatsApp API</span><span>Google Cloud</span>
+      <span>n8n</span><span>Make</span><span>Claude API</span><span>OpenAI</span><span>Bitrix24</span><span>amoCRM</span><span>HubSpot</span><span>Telegram API</span><span>WhatsApp API</span><span>Google Cloud</span>
+    </div>
+  </div>
+
+  <!-- WAVE BAND: animated dotted surface behind Services + Pain points -->
+  <div class="wave-band">
+    <canvas id="dottedSurface" class="dotted-surface" aria-hidden="true"></canvas>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title"><span class="fill">Системы</span><span class="ghost">для роста бизнеса</span></h2>
+        <p class="section-desc">Не отдельные боты, а сквозные связки: сайт, мессенджеры, CRM и документы работают как один конвейер.</p>
+      </div>
+
+      <div class="cards-row cards-row--3">
+        <div class="feature-card">
+          <div class="feature-card__icon">⚡</div>
+          <h3>Квалификация лидов</h3>
+          <p>AI-скрипты продаж в Telegram/WhatsApp + CRM. Первый ответ &lt;5 сек, конверсия в квалифицированную заявку +25–40%, нагрузка на менеджеров по первичным диалогам −60%.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🔗</div>
+          <h3>Автоматизация с помощью AI</h3>
+          <p>Связка сайта, почты, CRM и мессенджеров. Экономия 10–15 часов ручной работы отдела продаж в неделю, 0 потерянных заявок между системами.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🧠</div>
+          <h3>AI-ассистенты и RAG</h3>
+          <p>Корпоративный ассистент поверх ваших документов. Поиск информации сотрудником — с 10–15 минут до 30 секунд, нагрузка на поддержку −35%.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="section section--alt" id="pain">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title"><span class="fill">Проблемы бизнеса,</span><span class="ghost">которые я устраняю</span></h2>
+        <p class="section-desc">Четыре точки, где бизнес теряет деньги и время каждый день — и что меняется после внедрения AI.</p>
+      </div>
+
+      <div class="cards-row cards-row--4">
+        <div class="pain-card">
+          <div class="pain-card__icon">🐢</div>
+          <h3>Медленная обработка лидов</h3>
+          <div class="pain-card__row pain-card__row--before"><span>Было</span>ответ 15 минут — несколько часов, конверсия падает с каждой минутой ожидания</div>
+          <div class="pain-card__row pain-card__row--after"><span>Стало</span>AI отвечает за 3 сек в мессенджере, квалифицирует лида и создаёт сделку в CRM</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-card__icon">⚠️</div>
+          <h3>Ошибки в CRM</h3>
+          <div class="pain-card__row pain-card__row--before"><span>Было</span>до 30% сделок с незаполненными или задвоенными карточками</div>
+          <div class="pain-card__row pain-card__row--after"><span>Стало</span>поля заполняются из диалога и звонка автоматически, дубли объединяются без участия человека</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-card__icon">💬</div>
+          <h3>Потеря контекста встреч</h3>
+          <div class="pain-card__row pain-card__row--before"><span>Было</span>договорённости остаются в чьей-то голове, клиенту забывают написать в ~40% случаев</div>
+          <div class="pain-card__row pain-card__row--after"><span>Стало</span>AI составляет краткое содержание звонка и задачи за 2 минуты, письмо клиенту уходит само</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-card__icon">📄</div>
+          <h3>Рутинный документооборот</h3>
+          <div class="pain-card__row pain-card__row--before"><span>Было</span>2–3 часа на сверку КП, счетов и договоров вручную</div>
+          <div class="pain-card__row pain-card__row--after"><span>Стало</span>AI-парсер извлекает условия и суммы, сверяет с шаблоном за минуты</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+  <!-- /WAVE BAND -->
+
+  <!-- CASES -->
+  <section class="section" id="cases">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title"><span class="fill">Как это</span><span class="ghost">работает на практике</span></h2>
+        <p class="section-desc">Три архитектуры, которые уже считают деньги и время клиентов — не демо, а продакшн-связки.</p>
+      </div>
+
+      <div class="cases">
+        <div class="case-tabs" id="case-tabs">
+          <button class="case-tab active" data-case="0">Квалификация лидов</button>
+          <button class="case-tab" data-case="1">Итоги созвонов</button>
+          <button class="case-tab" data-case="2">Разбор документов</button>
+        </div>
+
+        <div class="case-panels" id="case-panels">
+          <div class="case-panel active" data-case="0">
+            <div class="case-panel__stage">
+              <span class="case-panel__label">Задача</span>
+              <p>Заявки из чата обрабатывались вручную: средний ответ — 22 минуты, до 20% лидов уходили к конкурентам.</p>
+            </div>
+            <div class="case-panel__stage">
+              <span class="case-panel__label">Архитектура</span>
+              <p>Заявка с сайта или из мессенджера сразу попадает в систему. AI сам пишет клиенту, задаёт нужные вопросы и понимает, готов ли он покупать — затем создаёт карточку сделки в CRM и уведомляет менеджера.</p>
+            </div>
+            <div class="case-panel__stage case-panel__stage--result">
+              <span class="case-panel__label">Результат</span>
+              <p><strong>3 сек</strong> первый ответ · <strong>+34%</strong> конверсия в квалифицированный лид · 0 ручного ввода в CRM</p>
+            </div>
+          </div>
+
+          <div class="case-panel" data-case="1">
+            <div class="case-panel__stage">
+              <span class="case-panel__label">Задача</span>
+              <p>После звонков договорённости фиксировались «как получится» — клиенту забывали написать в 40% случаев.</p>
+            </div>
+            <div class="case-panel__stage">
+              <span class="case-panel__label">Архитектура</span>
+              <p>Запись звонка автоматически превращается в текст, и AI составляет краткое содержание встречи: о чём договорились, что важно не упустить. Задачи сразу появляются в CRM, а клиенту уходит письмо с итогами.</p>
+            </div>
+            <div class="case-panel__stage case-panel__stage--result">
+              <span class="case-panel__label">Результат</span>
+              <p><strong>100%</strong> звонков фиксируется автоматически · письмо клиенту — за <strong>2 минуты</strong> · время на постобработку −90%</p>
+            </div>
+          </div>
+
+          <div class="case-panel" data-case="2">
+            <div class="case-panel__stage">
+              <span class="case-panel__label">Задача</span>
+              <p>2–3 часа на ручную сверку входящих КП и договоров, ошибки доходили до финального согласования.</p>
+            </div>
+            <div class="case-panel__stage">
+              <span class="case-panel__label">Архитектура</span>
+              <p>Входящий документ — счёт, договор или коммерческое предложение — система читает сама. AI достаёт из него суммы и условия, сверяет с вашим прайсом и присылает отчёт с подсветкой всех расхождений.</p>
+            </div>
+            <div class="case-panel__stage case-panel__stage--result">
+              <span class="case-panel__label">Результат</span>
+              <p>Обработка документа: <strong>2–3 ч → 4 мин</strong> · расхождения находятся до подписания, а не после</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section section--alt" id="process">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title"><span class="fill">Прозрачный</span><span class="ghost">процесс работы</span></h2>
+        <p class="section-desc">От первого созвона до рабочей системы — без затянутых сроков и скрытых доработок.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline__step">
+          <span class="timeline__num">01</span>
+          <h3>Аудит процессов</h3>
+          <p>Разбираю текущую воронку, узкие места и точки, где теряются лиды и время.</p>
+        </div>
+        <div class="timeline__step">
+          <span class="timeline__num">02</span>
+          <h3>Первая версия за 48 часов</h3>
+          <p>Собираю рабочий прототип на ваших данных, чтобы сразу показать эффект — до полного внедрения.</p>
+        </div>
+        <div class="timeline__step">
+          <span class="timeline__num">03</span>
+          <h3>Интеграция</h3>
+          <p>Довожу связку n8n/Make + AI API + CRM до продакшена: обработка ошибок, логирование, права доступа.</p>
+        </div>
+        <div class="timeline__step">
+          <span class="timeline__num">04</span>
+          <h3>Поддержка и рост</h3>
+          <p>Слежу за стабильностью, донастраиваю сценарии и расширяю автоматизацию на новые процессы.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="section" id="result">
+    <div class="container">
+      <div class="result-card">
+        <span class="result-card__label">Результат</span>
+        <p class="result-card__text">Пока конкуренты ищут время перезвонить клиенту — ваш AI уже квалифицировал лида и поставил сделку в CRM.</p>
+      </div>
+
+      <div class="result-stats">
+        <div class="result-stat">
+          <div class="result-stat__num">150+</div>
+          <div class="result-stat__label">Обработанных заявок в месяц</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-stat__num">97%</div>
+          <div class="result-stat__label">Лидов без потерь</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-stat__num">24/7</div>
+          <div class="result-stat__label">AI на связи без вашего участия</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--alt" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title"><span class="fill">Остались</span><span class="ghost">вопросы?</span></h2>
+        <p class="section-desc">Коротко о том, что обычно спрашивают перед стартом внедрения.</p>
+      </div>
+
+      <div class="faq">
+        <div class="faq__item">
+          <button class="faq__q">Сколько времени занимает внедрение?<span class="faq__icon">+</span></button>
+          <div class="faq__a"><p>Первую рабочую версию показываю через 48 часов. Полное внедрение с тестами и доработками занимает до 7 дней — в зависимости от количества систем и сценариев.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q">С какими CRM вы работаете?<span class="faq__icon">+</span></button>
+          <div class="faq__a"><p>Bitrix24, amoCRM, HubSpot. Если у вас другая система — обсудим возможность подключения по API на аудите.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q">Нужно ли останавливать продажи на время внедрения?<span class="faq__icon">+</span></button>
+          <div class="faq__a"><p>Нет. Настройка идёт параллельно с текущей работой, переключение на новые сценарии — без простоя.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q">Что если понадобятся доработки после запуска?<span class="faq__icon">+</span></button>
+          <div class="faq__a"><p>Каждый тариф включает период поддержки. После — донастройка и новые сценарии обсуждаются отдельно.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title"><span class="fill">Выберите</span><span class="ghost">свой уровень</span></h2>
+        <p class="section-desc">Три пакета внедрения — без скрытых доплат и абстрактных «часов работы».</p>
+      </div>
+
+      <div class="pricing">
+
+        <div class="price-card">
+          <div class="price-card__icon">🌱</div>
+          <h3 class="price-card__name">Минимальный</h3>
+          <p class="price-card__desc">Первая AI-автоматизация для проверки эффекта на реальных заявках.</p>
+          <div class="price-card__price">$500<span>/ проект</span></div>
+          <p class="price-card__features-label">Features</p>
+          <ul class="price-card__list">
+            <li>Один AI-сценарий (например, квалификация лидов в чате)</li>
+            <li>Интеграция с 2 каналами (например, Telegram и WhatsApp)</li>
+            <li>Подключение к CRM (Bitrix24 / amoCRM / HubSpot)</li>
+            <li>Базовый промпт и логика диалога под ваш продукт</li>
+            <li>Поддержка 7 дней после запуска</li>
+          </ul>
+          <a href="#contact" class="btn btn--outline">Выбрать тариф</a>
+        </div>
+
+        <div class="price-card price-card--selected">
+          <span class="price-card__badge">Популярный</span>
+          <div class="price-card__icon">⚡</div>
+          <h3 class="price-card__name">Стандартный</h3>
+          <p class="price-card__desc">Сквозная связка сайта, мессенджеров и CRM для растущего отдела продаж.</p>
+          <div class="price-card__price">$900<span>/ проект</span></div>
+          <p class="price-card__features-label">Features</p>
+          <ul class="price-card__list">
+            <li>Всё из тарифа «Минимальный»</li>
+            <li>До 3 каналов (сайт, соцсети, мессенджеры)</li>
+            <li>Автосценарии: триггеры, напоминания, письма клиентам</li>
+            <li>Сквозная аналитика по заявкам и сделкам</li>
+            <li>Обучение команды — 1 сессия</li>
+            <li>Поддержка 30 дней после запуска</li>
+          </ul>
+          <a href="#contact" class="btn btn--outline btn--outline-accent">Выбрать тариф</a>
+        </div>
+
+        <div class="price-card">
+          <div class="price-card__icon">🔥</div>
+          <h3 class="price-card__name">Премиум</h3>
+          <p class="price-card__desc">Максимальная автоматизация под ключ, включая AI-ассистента и документооборот.</p>
+          <div class="price-card__price">$2,000<span>/ проект</span></div>
+          <p class="price-card__features-label">Features</p>
+          <ul class="price-card__list">
+            <li>Всё из тарифа «Стандартный»</li>
+            <li>AI-ассистент/RAG над базой знаний компании</li>
+            <li>Автосуммаризация встреч и AI-парсер документов</li>
+            <li>Безлимит интеграций (телефония, реклама, e-mail)</li>
+            <li>Дашборды и отчёты в реальном времени</li>
+            <li>Приоритетная поддержка 60 дней после запуска</li>
+          </ul>
+          <a href="#contact" class="btn btn--outline">Выбрать тариф</a>
+        </div>
+
+      </div>
+      <p class="pricing__note">Нестандартные интеграции и доработки вне тарифа — считаются отдельно после аудита.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="container cta__inner">
+      <h2 class="cta__title">Бесплатный анализ вашего бизнеса<br>за 15 минут</h2>
+      <p class="cta__desc">Разберём воронку, найдём 1–2 точки для автоматизации и покажем эффект в цифрах — без обязательств.</p>
+      <form class="cta__form" id="contact-form">
+        <div class="cta__form-row">
+          <input type="text" id="cf-name" placeholder="Ваше имя" required>
+          <input type="text" id="cf-phone" placeholder="Телефон или почта" required>
+        </div>
+
+        <div class="cta__messenger">
+          <span class="cta__messenger-label">Удобный мессенджер:</span>
+          <label class="messenger-chip">
+            <input type="radio" name="messenger" value="WhatsApp" checked>
+            <span>WhatsApp</span>
+          </label>
+          <label class="messenger-chip">
+            <input type="radio" name="messenger" value="Telegram">
+            <span>Telegram</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn--primary">Записаться на аналитику</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="#top" class="logo">nodex<span class="logo__dot">•</span></a>
+    <p class="footer__copy">© 2026 NODEX. AI-интеграция и автоматизация бизнеса.</p>
+    <div class="footer__links">
+      <a href="#services">Услуги</a>
+      <a href="#pricing">Тарифы</a>
+      <a href="#contact">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<div class="success-overlay" id="successOverlay">
+  <div class="success-overlay__card">
+    <div class="success-overlay__check">✓</div>
+    <h3>Заявка отправлена!</h3>
+    <p>Мы свяжемся с вами в ближайшее время, чтобы провести анализ вашего бизнеса.</p>
+    <button type="button" class="btn btn--white" id="successClose">Готово</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
