@@ -671,4 +671,19 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   .hero { padding: 130px 0 40px; }
   .hero__inner { gap: 28px; }
   .hero__bg { top: 210px; }
+
+  /* Desktop vertical rhythm (110px section padding, wide gaps) reads as
+     dead scrolling space on a phone — tighten it, and drop the secondary
+     stat clause in feature cards so each card is a single readable line. */
+  .section { padding: 64px 0; }
+  .cta { padding: 72px 0; }
+  .section-head { margin-bottom: 36px; gap: 14px; }
+  .cards-row--3, .cards-row--4 { gap: 14px; }
+  .feature-card, .pain-card { padding: 22px 20px; }
+  .feature-card__extra { display: none; }
+  .case-tabs { gap: 8px; }
+  .case-tab { flex: 1 1 auto; justify-content: center; text-align: center; }
+  .timeline { row-gap: 34px; }
+  .result-card { padding: 30px 24px; }
+  .price-card { padding: 26px 22px; }
 }
