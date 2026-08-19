@@ -212,9 +212,13 @@ if (cursorGlow && window.matchMedia("(hover: hover)").matches) {
 // Contact form -> delivered to the studio inbox (FormSubmit) and to Telegram
 // in parallel, with a mailto fallback only if both channels fail, so a lead
 // is never silently lost.
+//
+// Telegram delivery goes through /api/notify-telegram rather than calling the
+// Bot API directly from the browser — a bot token in client code is public
+// the moment this ships, so it must live server-side. Until that serverless
+// endpoint exists, this call 404s and Promise.allSettled below falls through
+// to the email channel, so no lead is lost either way.
 const CONTACT_EMAIL = "milikidze.geoi@gmail.com";
-const TELEGRAM_BOT_TOKEN = "8670745121:AAFcQTan0AhtcOFPZgOOeE98HXyKKl1QBY0";
-const TELEGRAM_CHAT_ID = "328851476";
 const form = document.getElementById("contact-form");
 const successOverlay = document.getElementById("successOverlay");
 const successClose = document.getElementById("successClose");
@@ -242,19 +246,10 @@ form.addEventListener("submit", async (e) => {
     }),
   });
 
-  const sendTelegram = fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+  const sendTelegram = fetch("/api/notify-telegram", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: TELEGRAM_CHAT_ID,
-      text: [
-        "🆕 Новая заявка с сайта NODEX",
-        "",
-        `Имя: ${name}`,
-        `Телефон/почта: ${phone}`,
-        `Удобный мессенджер: ${messenger}`,
-      ].join("\n"),
-    }),
+    body: JSON.stringify({ name, phone, messenger }),
   });
 
   const results = await Promise.allSettled([sendEmail, sendTelegram]);

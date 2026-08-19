@@ -639,6 +639,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   .hero__grid { grid-template-columns: 1fr; }
   .hero__stats { align-items: flex-start; }
   .stat-card { text-align: left; }
+  /* Stacked layout puts hero__left text at full width, directly over the
+     photo instead of beside it — dim the backdrop so the text stays readable. */
+  .hero__photo { opacity: 0.32; }
+  .hero__glow--key, .hero__glow--1, .hero__glow--2 { opacity: 0.5; }
+  .hero__desc, .hero__tags { text-shadow: 0 2px 16px rgba(10,10,10,0.8); }
   .cards-row--3, .cards-row--4 { grid-template-columns: repeat(2, 1fr); }
   .timeline { grid-template-columns: repeat(2, 1fr); row-gap: 46px; }
   .timeline::before { display: none; }
